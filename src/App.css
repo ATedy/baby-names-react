@@ -1,0 +1,18 @@
+.app{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.female, .male{
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 3px;
+
+}
+.female{
+  background-color: pink;
+}
+
+.male{
+  background-color: rgb(113, 175, 247);
+}
