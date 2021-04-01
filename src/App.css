@@ -1,18 +1,28 @@
-.app{
+.app {
+  margin: 4rem auto;
+  width: 70%;
   display: flex;
   flex-wrap: wrap;
+  border: 1px solid rgb(145, 187, 250);
 }
 
-.female, .male{
-  padding: 1rem;
-  margin: 1rem;
+.searchInput {
+  width: 22%;
+  height: 2.2rem;
+  display: block;
+  margin: 3rem auto;
+}
+
+.female,
+.male {
+  padding: 0.6rem;
+  margin: 0.6rem;
   border-radius: 3px;
-
 }
-.female{
+.female {
   background-color: pink;
 }
 
-.male{
+.male {
   background-color: rgb(113, 175, 247);
 }

@@ -5,11 +5,19 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="app">
-      {BabyNameData.map((singleBabyName) => (
-        <Name babyName={singleBabyName} />
-      ))}
-    </div>
+    <>
+      <input
+        className="searchInput"
+        type="text"
+        name="searchInput"
+        placeholder="Search Names here"
+      />
+      <div className="app">
+        {BabyNameData.map((singleBabyName) => (
+          <Name babyName={singleBabyName} />
+        ))}
+      </div>
+    </>
   );
 }
 
