@@ -7,10 +7,17 @@ import "./App.css";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
+  const [clickedName, setClickedName] = useState([]);
   // const [filteredBabyName, setFilteredBabyName] = useState([]);
 
   const onChangeHandler = (e) => {
     setInputValue(e.target.value.toLowerCase());
+  };
+
+  const onClickHandler = (e) => {
+    setClickedName(clickedName.concat(e.target.innerHTML));
+    console.log(clickedName);
+    console.log(filteredBabyName);
   };
 
   const filteredBabyName = !inputValue
@@ -21,11 +28,15 @@ function App() {
   return (
     <div className="app">
       <BabyNameSearch handler={onChangeHandler} searchValue={inputValue} />
-      <FavouriteNames />
+      <FavouriteNames favoriteArr={clickedName} />
       <hr className="mt-4 mb-4" />
       <div className="namesContainer">
         {filteredBabyName.map((singleBabyName, index) => (
-          <Name key={index} babyName={singleBabyName} />
+          <Name
+            key={index}
+            babyName={singleBabyName}
+            onClickHandler={onClickHandler}
+          />
         ))}
       </div>
     </div>

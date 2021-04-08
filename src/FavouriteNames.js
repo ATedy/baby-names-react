@@ -1,7 +1,15 @@
 import React from "react";
 
-function FavouriteNames() {
-  return <h3 className="ml-4">Favourites: </h3>;
+function FavouriteNames(props) {
+  // const onClickHandler = (e) => {};
+  return (
+    <div>
+      Favourite Names:
+      {props.favoriteArr.map((favoriteName, index) => {
+        return <span key={index}>{favoriteName}</span>;
+      })}
+    </div>
+  );
 }
 
 export default FavouriteNames;

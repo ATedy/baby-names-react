@@ -1,14 +1,13 @@
 import React from "react";
 
 const Name = (props) => {
-  const handler = () => {
-    console.log(props.babyName.name);
-  };
+  // const [isActive, setIsActive] = useState(true);
+
   //empty class to be filled based on the condition
   let cssClass = "";
   props.babyName.sex === "f" ? (cssClass = "female") : (cssClass = "male");
   return (
-    <span onClick={handler} className={cssClass}>
+    <span onClick={props.onClickHandler} className={cssClass}>
       {props.babyName.name}
     </span>
   );
