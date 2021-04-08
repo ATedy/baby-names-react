@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Name from "./Name";
 import BabyNameData from "./babyNameData.json";
 import BabyNameSearch from "./BabyNameSearch";
+import FavouriteNames from "./FavouriteNames";
 import "./App.css";
 
 function App() {
@@ -18,14 +19,16 @@ function App() {
         babyName.name.toLowerCase().includes(inputValue)
       );
   return (
-    <>
+    <div className="app">
       <BabyNameSearch handler={onChangeHandler} searchValue={inputValue} />
-      <div className="app">
+      <FavouriteNames />
+      <hr className="mt-4 mb-4" />
+      <div className="namesContainer">
         {filteredBabyName.map((singleBabyName, index) => (
           <Name key={index} babyName={singleBabyName} />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

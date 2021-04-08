@@ -1,9 +1,13 @@
 .app {
   margin: 4rem auto;
   width: 70%;
+  border: 1px solid rgb(145, 187, 250);
+}
+
+.namesContainer {
   display: flex;
   flex-wrap: wrap;
-  border: 1px solid rgb(145, 187, 250);
+  border-top: 1px solid rgb(145, 187, 250);
 }
 
 .searchInput {
