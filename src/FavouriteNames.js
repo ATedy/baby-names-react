@@ -1,4 +1,5 @@
 import React from "react";
+import Name from "./Name";
 
 function FavouriteNames(props) {
   // const onClickHandler = (e) => {};
@@ -6,7 +7,13 @@ function FavouriteNames(props) {
     <div>
       Favourite Names:
       {props.favoriteArr.map((favoriteName, index) => {
-        return <span key={index}>{favoriteName}</span>;
+        return (
+          <Name
+            key={index}
+            babyName={favoriteName}
+            onClickHandler={props.removeFav}
+          />
+        );
       })}
     </div>
   );

@@ -4,10 +4,12 @@ const Name = (props) => {
   // const [isActive, setIsActive] = useState(true);
 
   //empty class to be filled based on the condition
-  let cssClass = "";
-  props.babyName.sex === "f" ? (cssClass = "female") : (cssClass = "male");
+
   return (
-    <span onClick={props.onClickHandler} className={cssClass}>
+    <span
+      onClick={() => props.onClickHandler(props.babyName)}
+      className={props.babyName.sex}
+    >
       {props.babyName.name}
     </span>
   );

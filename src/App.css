@@ -17,16 +17,16 @@
   margin: 3rem auto;
 }
 
-.female,
-.male {
+.f,
+.m {
   padding: 0.6rem;
   margin: 0.6rem;
   border-radius: 3px;
 }
-.female {
+.f {
   background-color: pink;
 }
 
-.male {
+.m {
   background-color: rgb(113, 175, 247);
 }
