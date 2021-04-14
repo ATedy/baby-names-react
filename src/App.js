@@ -16,7 +16,6 @@ function App() {
 
   const onClickHandler = (e) => {
     setClickedName(clickedName.concat(e.target.innerHTML));
-    console.log(clickedName);
     console.log(filteredBabyName);
   };
 
