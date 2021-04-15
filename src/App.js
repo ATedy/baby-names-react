@@ -16,7 +16,6 @@ function App() {
 
   const onClickHandler = (babyName) => {
     setClickedName(clickedName.concat(babyName));
-    console.log(filteredBabyName);
   };
 
   useEffect(() => {
