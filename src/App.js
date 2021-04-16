@@ -7,7 +7,7 @@ import "./App.css";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [clickedName, setClickedName] = useState([]);
+  const [clickedNameArr, setClickedNameArr] = useState([]);
   const [filteredBabyName, setFilteredBabyName] = useState([]);
 
   const onChangeHandler = (e) => {
@@ -15,36 +15,36 @@ function App() {
   };
 
   const onClickHandler = (babyName) => {
-    setClickedName(clickedName.concat(babyName));
+    setClickedNameArr(clickedNameArr.concat(babyName));
   };
 
   useEffect(() => {
-    let data = !inputValue
+    let babiesArr = !inputValue
       ? BabyNameData
       : BabyNameData.filter((babyName) =>
           babyName.name.toLowerCase().includes(inputValue)
         );
 
-    if (clickedName.length > 0) {
-      data = data.filter((babyName) => {
-        return !clickedName.includes(babyName);
+    if (clickedNameArr.length > 0) {
+      babiesArr = babiesArr.filter((babyName) => {
+        return !clickedNameArr.includes(babyName);
       });
     }
-    setFilteredBabyName(data);
-  }, [inputValue, clickedName]);
+    setFilteredBabyName(babiesArr);
+  }, [inputValue, clickedNameArr]);
 
   const removeFav = (babyName) => {
     console.log(babyName);
-    const data1 = clickedName.filter((currentBabyName) => {
+    const reducedBabiesArr = clickedNameArr.filter((currentBabyName) => {
       return currentBabyName !== babyName;
     });
-    setClickedName(data1);
+    setClickedNameArr(reducedBabiesArr);
   };
 
   return (
     <div className="app">
       <BabyNameSearch handler={onChangeHandler} searchValue={inputValue} />
-      <FavouriteNames favoriteArr={clickedName} removeFav={removeFav} />
+      <FavouriteNames favoriteArr={clickedNameArr} removeFav={removeFav} />
       <hr className="mt-4 mb-4" />
       <div className="namesContainer">
         {filteredBabyName.map((singleBabyName, index) => (

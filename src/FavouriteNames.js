@@ -5,7 +5,7 @@ function FavouriteNames(props) {
   // const onClickHandler = (e) => {};
   return (
     <div>
-      Favourite Names:
+      Favorite-Names:
       {props.favoriteArr.map((favoriteName, index) => {
         return (
           <Name
