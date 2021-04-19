@@ -10,10 +10,12 @@ function App() {
   const [clickedNameArr, setClickedNameArr] = useState([]);
   const [filteredBabyName, setFilteredBabyName] = useState([]);
 
+  // this handler is listening to the input text from a user
   const onChangeHandler = (e) => {
     setInputValue(e.target.value.toLowerCase());
   };
 
+  // this handler is listening to the input text from a user
   const onClickHandler = (babyName) => {
     setClickedNameArr(clickedNameArr.concat(babyName));
   };
