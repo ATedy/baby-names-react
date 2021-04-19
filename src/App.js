@@ -3,6 +3,7 @@ import Name from "./Name";
 import BabyNameData from "./babyNameData.json";
 import BabyNameSearch from "./BabyNameSearch";
 import FavouriteNames from "./FavouriteNames";
+import GenderSelector from "./GenderSelector";
 import "./App.css";
 
 function App() {
@@ -18,6 +19,10 @@ function App() {
   // this handler is listening to the input text from a user
   const onClickHandler = (babyName) => {
     setClickedNameArr(clickedNameArr.concat(babyName));
+  };
+
+  const genderSelector = () => {
+    console.log("gender");
   };
 
   useEffect(() => {
@@ -45,7 +50,10 @@ function App() {
 
   return (
     <div className="app">
-      <BabyNameSearch handler={onChangeHandler} searchValue={inputValue} />
+      <div className="text-center">
+        <BabyNameSearch handler={onChangeHandler} searchValue={inputValue} />
+        <GenderSelector onClickGenderSelector={genderSelector} />
+      </div>
       <FavouriteNames favoriteArr={clickedNameArr} removeFav={removeFav} />
       <hr className="mt-4 mb-4" />
       <div className="namesContainer">

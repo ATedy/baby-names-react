@@ -13,10 +13,12 @@
 .searchInput {
   width: 22%;
   height: 2.2rem;
-  display: block;
-  margin: 3rem auto;
+  margin: 3rem 1rem;
 }
-
+.badge {
+  background-color: rgb(154, 156, 248);
+  cursor: pointer;
+}
 .f,
 .m {
   padding: 0.6rem;
