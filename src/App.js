@@ -8,19 +8,20 @@ import "./App.css";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [clickedNameArr, setClickedNameArr] = useState([]);
+  // will store favourites names on click
+  const [clickedFavArr, setClickedFavArr] = useState([]);
   const [filteredBabyName, setFilteredBabyName] = useState([]);
   // At the start of the app, it will have all the list
-  const [genderList, setGenderList] = useState(BabyNameData);
+  const [genderNameList, setGenderNameList] = useState(BabyNameData);
 
   // this handler is listening to the input text from a user
   const onChangeHandler = (e) => {
     setInputValue(e.target.value.toLowerCase());
   };
 
-  // this handler is listening to the input text from a user
+  // this handler is listening for fav array
   const onClickHandler = (babyName) => {
-    setClickedNameArr(clickedNameArr.concat(babyName));
+    setClickedFavArr(clickedFavArr.concat(babyName));
   };
 
   /* 
@@ -37,39 +38,49 @@ function App() {
         return babyName.sex === "m";
       });
 
-      setGenderList(genderType);
+      setGenderNameList(genderType);
     } else if (gender === "f") {
       genderType = BabyNameData.filter((babyName) => {
         return babyName.sex === "f";
       });
 
-      setGenderList(genderType);
+      setGenderNameList(genderType);
     } else {
-      setGenderList(BabyNameData);
+      setGenderNameList(BabyNameData);
     }
   };
 
+  /* 
+  - genderList is the array we have from above, and based on the text input it will be rendered conditionally.
+  - babiesArr holds the current list of baby names, either all or filtered
+  - 
+  
+  */
   useEffect(() => {
     let babiesArr = !inputValue
-      ? genderList
-      : genderList.filter((babyName) =>
-          babyName.name.toLowerCase().includes(inputValue)
+      ? genderNameList
+      : genderNameList.filter((genderName) =>
+          genderName.name.toLowerCase().includes(inputValue)
         );
+    /* 
+   - if the clickedFavArr has list already we don't want them to be list in the name list again, so we filter based on all the names but clicked one
+   - so, babiesArr will have a filtered list
+   - similarly the reducedBabiesArr will have have all the except the clicked ones, will be removed and our clickedFavArr will bet set with the reduced version of the list
 
-    if (clickedNameArr.length > 0) {
+    */
+    if (clickedFavArr.length > 0) {
       babiesArr = babiesArr.filter((babyName) => {
-        return !clickedNameArr.includes(babyName);
+        return !clickedFavArr.includes(babyName);
       });
     }
     setFilteredBabyName(babiesArr);
-  }, [inputValue, clickedNameArr, genderList]);
+  }, [inputValue, clickedFavArr, genderNameList]);
 
   const removeFav = (babyName) => {
-    console.log(babyName);
-    const reducedBabiesArr = clickedNameArr.filter((currentBabyName) => {
+    const reducedBabiesArr = clickedFavArr.filter((currentBabyName) => {
       return currentBabyName !== babyName;
     });
-    setClickedNameArr(reducedBabiesArr);
+    setClickedFavArr(reducedBabiesArr);
   };
 
   return (
@@ -78,7 +89,7 @@ function App() {
         <BabyNameSearch handler={onChangeHandler} searchValue={inputValue} />
         <GenderSelector onClickGenderSelector={genderSelector} />
       </div>
-      <FavouriteNames favoriteArr={clickedNameArr} removeFav={removeFav} />
+      <FavouriteNames favoriteArr={clickedFavArr} removeFav={removeFav} />
       <hr className="mt-4 mb-4" />
       <div className="namesContainer">
         {filteredBabyName.map((singleBabyName, index) => (
